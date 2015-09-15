@@ -17,11 +17,11 @@
 - (void)prepareLayout {
     
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.minimumLineSpacing = 50;
+    self.minimumLineSpacing = 40;
 }
 
 - (CGSize)collectionViewContentSize {
-    return CGSizeMake(250*10, 250);
+    return CGSizeMake(240*10, 250);
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
@@ -62,24 +62,4 @@
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
 }
-
-//- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
-//    CGFloat offsetAdjustment = MAXFLOAT;
-//    CGFloat horizontalCenter = proposedContentOffset.x + (CGRectGetWidth(self.collectionView.bounds))/2;
-//    
-//    CGRect targetRect = CGRectMake(proposedContentOffset.x, 0.0, self.collectionView.bounds.size.width, CGRectGetHeight(self.collectionView.bounds));
-//    
-//    NSArray *array = [super layoutAttributesForElementsInRect:targetRect];
-//    
-//    for (UICollectionViewLayoutAttributes *attributes in array) {
-//        CGFloat itemHorizontalCenter = attributes.center.x;
-//        if(ABS(itemHorizontalCenter - horizontalCenter) < offsetAdjustment) {
-//            offsetAdjustment = itemHorizontalCenter -horizontalCenter;
-//            
-//        }
-//    }
-//    
-//    return CGPointMake(proposedContentOffset.x+offsetAdjustment,proposedContentOffset.y);
-//    
-//}
 @end

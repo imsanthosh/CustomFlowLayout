@@ -32,7 +32,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-    cell.label.text = [NSString stringWithFormat:@"%d",indexPath.item];
+    cell.label.text = [NSString stringWithFormat:@"%ld",indexPath.item];
     
     return cell;
 }
@@ -50,62 +50,62 @@
     
 }
 
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
-    
-    NSArray *cellsArray = [_collectionView visibleCells];
-    
-    CollectionViewCell *nearestCell = nil;
-    
-    CGFloat center = scrollView.contentOffset.x + CGRectGetWidth(scrollView.bounds)/2;
-    
-    for (CollectionViewCell *cell in cellsArray) {
-        
-        if(!nearestCell) {
-            nearestCell = cell;
-        } else {
-            
-            if(ABS(nearestCell.center.x -center) > ABS(cell.center.x) - center ) {
-                nearestCell = cell;
-            }
-            
-        }
-    }
-    
-    [_collectionView scrollToItemAtIndexPath:[_collectionView indexPathForCell:nearestCell] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    
-    
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    
-    
-    if(!decelerate) {
-        NSArray *cellsArray = [_collectionView visibleCells];
-        
-        CollectionViewCell *nearestCell = nil;
-        
-        CGFloat center = scrollView.contentOffset.x + CGRectGetWidth(scrollView.bounds)/2;
-        
-        for (CollectionViewCell *cell in cellsArray) {
-            
-            if(!nearestCell) {
-                nearestCell = cell;
-            } else {
-                
-                if(ABS(nearestCell.center.x -center) > ABS(cell.center.x) - center ) {
-                    nearestCell = cell;
-                }
-                
-            }
-        }
-        
-        [_collectionView scrollToItemAtIndexPath:[_collectionView indexPathForCell:nearestCell] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        
-
-    }
-    
-}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    
+//    
+//    NSArray *cellsArray = [_collectionView visibleCells];
+//    
+//    CollectionViewCell *nearestCell = nil;
+//    
+//    CGFloat center = scrollView.contentOffset.x + CGRectGetWidth(scrollView.bounds)/2;
+//    
+//    for (CollectionViewCell *cell in cellsArray) {
+//        
+//        if(!nearestCell) {
+//            nearestCell = cell;
+//        } else {
+//            
+//            if(ABS(nearestCell.center.x -center) > ABS(cell.center.x) - center ) {
+//                nearestCell = cell;
+//            }
+//            
+//        }
+//    }
+//    
+//    [_collectionView scrollToItemAtIndexPath:[_collectionView indexPathForCell:nearestCell] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+//    
+//    
+//}
+//
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    
+//    
+//    if(!decelerate) {
+//        NSArray *cellsArray = [_collectionView visibleCells];
+//        
+//        CollectionViewCell *nearestCell = nil;
+//        
+//        CGFloat center = scrollView.contentOffset.x + CGRectGetWidth(scrollView.bounds)/2;
+//        
+//        for (CollectionViewCell *cell in cellsArray) {
+//            
+//            if(!nearestCell) {
+//                nearestCell = cell;
+//            } else {
+//                
+//                if(ABS(nearestCell.center.x -center) > ABS(cell.center.x) - center ) {
+//                    nearestCell = cell;
+//                }
+//                
+//            }
+//        }
+//        
+//        [_collectionView scrollToItemAtIndexPath:[_collectionView indexPathForCell:nearestCell] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+//        
+//
+//    }
+//    
+//}
 
 @end
